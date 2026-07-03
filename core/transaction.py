@@ -7,6 +7,3 @@ class Transaction:
 
     def __str__(self):
         return(f"Kategori : {self.category}\nJumlah   : Rp{self.amount:,}\nJenis    : {self.jenis}\nCatatan  : {self.description}")
-
-t = Transaction(2500,"[makanan]","baso","pengeluaran")
-print(t)
