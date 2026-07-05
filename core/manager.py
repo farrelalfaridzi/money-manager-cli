@@ -6,6 +6,9 @@ class TransactionManager:
         self.transactions.append(transaction)
 
     def show_transactions(self):
-        for transaction in self.transactions:
-            print(transaction)
-            print("-------------------------")
+        if not self.transactions:
+            print("tidak ada transaksi")
+        else:
+            for transaction in self.transactions:
+                print(transaction)
+                print("-------------------------")

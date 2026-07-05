@@ -30,6 +30,8 @@ while True:
     elif choice == "3":
         saldo = balance_service.calculate_balance(manager.transactions)
         print(f"Saldo sekarang:\nRp {saldo:,}")
+    elif choice == "4":
+        manager.show_transactions()
     elif choice == "0":
         print("keluar...")
 

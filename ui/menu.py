@@ -4,6 +4,7 @@ class Menu:
         print("1. Tambah Pemasukan")
         print("2. Tambah Pengeluaran")
         print("3. Saldo")
+        print("4. Lihat Semua Transaksi")
         print("0. keluar")
 
     def get_choice(self):
