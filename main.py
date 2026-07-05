@@ -4,12 +4,35 @@ from core.transaction import Transaction
 
 from services.balance_service import BalanceService
 
-t = Transaction(20000, "Kebutuhan", "Bensin", "Pengeluaran")
-t2 = Transaction(50000, "Makanan", "Nasi goreng", "Pengeluaran")
-service = BalanceService()
-transaction_manager = TransactionManager()
-transaction_manager.add_transaction(t)
-transaction_manager.add_transaction(t2)
-transaction_manager.show_transactions()
-saldo = service.calculate_balance(transaction_manager.transactions)
-print(saldo)
+from ui.menu import Menu
+
+balance_service = BalanceService()
+manager = TransactionManager()
+menu = Menu()
+
+while True:
+    menu.show_menu()
+    choice = menu.get_choice()
+    if choice == "1":
+        jumlah = int(input("Jumlah :"))
+        kategori = input("Kategori :")
+        catatan = input("Catatan :")
+        pemasukan = Transaction(jumlah, kategori, catatan, "Pemasukan")
+        manager.add_transaction(pemasukan)
+        print("Pemasukan berhasil ditambah")
+    elif choice == "2":
+        jumlah = int(input("Jumlah :"))
+        kategori = input("Kategori :")
+        catatan = input("Catatan :")
+        pengeluaran = Transaction(jumlah, kategori, catatan, "Pengeluaran")
+        manager.add_transaction(pengeluaran)
+        print("Pengeluaran berhasil ditambah")
+    elif choice == "3":
+        saldo = balance_service.calculate_balance(manager.transactions)
+        print(f"Saldo sekarang:\nRp {saldo:,}")
+    elif choice == "0":
+        print("keluar...")
+
+        break
+    else :
+        print("Tidak valid!")
