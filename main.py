@@ -8,10 +8,13 @@ from ui.menu import Menu
 
 from services.search_service import SearchService
 
+from services.filter_service import FilterService
+
 balance_service = BalanceService()
 manager = TransactionManager()
 menu = Menu()
 search_service = SearchService()
+filter_service = FilterService()
 
 while True:
     menu.show_menu()
@@ -42,6 +45,15 @@ while True:
             print("Tidak ada transaksi")
         else:
             for transaction in transactions:
+                print(transaction)
+                print("--------------------")
+    elif choice == "6":
+        jenis = input("Masukan Jenis \n(Pemasukan/Pengeluaran) : ")
+        transaction_by_jenis = filter_service.filter_by_type(manager.transactions, jenis)
+        if not transaction_by_jenis:
+            print("Tidak ada transaksi")
+        else:
+            for transaction in transaction_by_jenis:
                 print(transaction)
                 print("--------------------")
     elif choice == "0":
