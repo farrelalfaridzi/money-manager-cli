@@ -6,9 +6,12 @@ from services.balance_service import BalanceService
 
 from ui.menu import Menu
 
+from services.search_service import SearchService
+
 balance_service = BalanceService()
 manager = TransactionManager()
 menu = Menu()
+search_service = SearchService()
 
 while True:
     menu.show_menu()
@@ -32,6 +35,15 @@ while True:
         print(f"Saldo sekarang:\nRp {saldo:,}")
     elif choice == "4":
         manager.show_transactions()
+    elif choice == "5":
+        kategori = input("Kategori : ")
+        transactions = search_service.search_by_category(manager.transactions, kategori)
+        if not transactions:
+            print("Tidak ada transaksi")
+        else:
+            for transaction in transactions:
+                print(transaction)
+                print("--------------------")
     elif choice == "0":
         print("keluar...")
 
