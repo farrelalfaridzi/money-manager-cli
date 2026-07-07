@@ -7,6 +7,7 @@ class Menu:
         print("4. Lihat Semua Transaksi")
         print("5. Cari berdasarkan kategori")
         print("6. Filter berdasarkan jenis")
+        print("7. Lihat total Pemasukan/Pengeluaran")
         print("0. keluar")
 
     def get_choice(self):

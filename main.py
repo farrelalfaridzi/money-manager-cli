@@ -56,6 +56,16 @@ while True:
             for transaction in transaction_by_jenis:
                 print(transaction)
                 print("--------------------")
+    elif choice == "7":
+        choice_7 = input("Pemasukan/Pengeluaran : ")
+        if choice_7 == "Pemasukan":
+            pemasukan_7 = balance_service.get_income(manager.transactions)
+            print(f"Total Pemasukan : Rp {pemasukan_7:,}")
+        elif choice_7 == "Pengeluaran":
+            pengeluaran_7 = balance_service.get_expense(manager.transactions)
+            print(f"Total Pengeluaran : Rp {pengeluaran_7:,}")
+        else:
+            print("Tidak valid")
     elif choice == "0":
         print("keluar...")
 
