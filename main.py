@@ -10,11 +10,14 @@ from services.search_service import SearchService
 
 from services.filter_service import FilterService
 
+from storage.file_manager import FileManager
+
 balance_service = BalanceService()
 manager = TransactionManager()
 menu = Menu()
 search_service = SearchService()
 filter_service = FilterService()
+file_manager = FileManager()
 
 while True:
     menu.show_menu()
@@ -66,6 +69,9 @@ while True:
             print(f"Total Pengeluaran : Rp {pengeluaran_7:,}")
         else:
             print("Tidak valid")
+    elif choice == "8":
+        file_manager.save(manager.transactions)
+        print("Data berhasil disimpan")
     elif choice == "0":
         print("keluar...")
 
