@@ -72,6 +72,11 @@ while True:
     elif choice == "8":
         file_manager.save(manager.transactions)
         print("Data berhasil disimpan")
+    elif choice == "9":
+        loaded_transactions = file_manager.load()
+        print("Data berhasil dimuat")
+        for transaction in loaded_transactions :
+            manager.add_transaction(transaction)
     elif choice == "0":
         print("keluar...")
 

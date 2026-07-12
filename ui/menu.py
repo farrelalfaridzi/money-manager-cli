@@ -9,6 +9,7 @@ class Menu:
         print("6. Filter berdasarkan jenis")
         print("7. Lihat total Pemasukan/Pengeluaran")
         print("8. Simpan Data")
+        print("9. Muat Data")
         print("0. keluar")
 
     def get_choice(self):
