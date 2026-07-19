@@ -20,12 +20,15 @@ while True:
     menu.show_menu()
     choice = menu.get_choice()
     if choice == "1":
-        jumlah = int(input("Jumlah :"))
-        kategori = input("Kategori :")
-        catatan = input("Catatan :")
-        pemasukan = Transaction(jumlah, kategori, catatan, "Pemasukan")
-        manager.add_transaction(pemasukan)
-        print("Pemasukan berhasil ditambah")
+        try:
+            jumlah = int(input("Jumlah :"))
+            kategori = input("Kategori :")
+            catatan = input("Catatan :")
+            pemasukan = Transaction(jumlah, kategori, catatan, "Pemasukan")
+            manager.add_transaction(pemasukan)
+            print("Pemasukan berhasil ditambah")
+        except ValueError:
+            print("Masukan angka")
     elif choice == "2":
         jumlah = int(input("Jumlah :"))
         kategori = input("Kategori :")
@@ -67,10 +70,13 @@ while True:
         else:
             print("Tidak valid")
     elif choice == "8":
-        manager.show_transactions()
-        nomor_transaksi = int(input("Nomor transaksi : "))
-        manager.delete_transaction(nomor_transaksi)
-        print("transaksi berhasil dihapus")
+        try:
+            manager.show_transactions()
+            nomor_transaksi = int(input("Nomor transaksi : "))
+            manager.delete_transaction(nomor_transaksi)
+            print("transaksi berhasil dihapus")
+        except IndexError:
+            print("Nomor transaksi tidak ditemukan")
     elif choice == "9":
         manager.show_transactions()
         nomor_transaksi = int(input("Nomor transaksi : "))
