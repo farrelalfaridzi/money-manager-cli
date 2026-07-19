@@ -16,6 +16,12 @@ menu = Menu()
 search_service = SearchService()
 filter_service = FilterService()
 
+def invalid_number():
+    print("Harus berupa angka")
+
+def index_error():
+    print("Nomor transaksi tidak ditemukan")
+
 while True:
     menu.show_menu()
     choice = menu.get_choice()
@@ -28,14 +34,17 @@ while True:
             manager.add_transaction(pemasukan)
             print("Pemasukan berhasil ditambah")
         except ValueError:
-            print("Masukan angka")
+            invalid_number()
     elif choice == "2":
-        jumlah = int(input("Jumlah :"))
-        kategori = input("Kategori :")
-        catatan = input("Catatan :")
-        pengeluaran = Transaction(jumlah, kategori, catatan, "Pengeluaran")
-        manager.add_transaction(pengeluaran)
-        print("Pengeluaran berhasil ditambah")
+        try:
+            jumlah = int(input("Jumlah :"))
+            kategori = input("Kategori :")
+            catatan = input("Catatan :")
+            pengeluaran = Transaction(jumlah, kategori, catatan, "Pengeluaran")
+            manager.add_transaction(pengeluaran)
+            print("Pengeluaran berhasil ditambah")
+        except ValueError:
+            invalid_number()
     elif choice == "3":
         saldo = balance_service.calculate_balance(manager.transactions)
         print(f"Saldo sekarang:\nRp {saldo:,}")
@@ -76,16 +85,23 @@ while True:
             manager.delete_transaction(nomor_transaksi)
             print("transaksi berhasil dihapus")
         except IndexError:
-            print("Nomor transaksi tidak ditemukan")
+            index_error()
+        except ValueError:
+            invalid_number()
     elif choice == "9":
-        manager.show_transactions()
-        nomor_transaksi = int(input("Nomor transaksi : "))
-        jumlah = int(input("Jumlah :"))
-        kategori = input("Kategori :")
-        catatan = input("Catatan :")
-        jenis = input("Jenis (Pemasukan/Pengeluaran) : ")
-        manager.update_transaction(nomor_transaksi, jumlah, kategori, catatan, jenis)
-        print("Transaksi berhasil diupdate")
+        try:
+            manager.show_transactions()
+            nomor_transaksi = int(input("Nomor transaksi : "))
+            jumlah = int(input("Jumlah :"))
+            kategori = input("Kategori :")
+            catatan = input("Catatan :")
+            jenis = input("Jenis (Pemasukan/Pengeluaran) : ")
+            manager.update_transaction(nomor_transaksi, jumlah, kategori, catatan, jenis)
+            print("Transaksi berhasil diupdate")
+        except IndexError:
+            index_error()
+        except ValueError:
+            invalid_number()
     elif choice == "0":
         print("keluar...")
 
