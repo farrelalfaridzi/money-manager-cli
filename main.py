@@ -66,6 +66,20 @@ while True:
             print(f"Total Pengeluaran : Rp {pengeluaran_7:,}")
         else:
             print("Tidak valid")
+    elif choice == "8":
+        manager.show_transactions()
+        nomor_transaksi = int(input("Nomor transaksi : "))
+        manager.delete_transaction(nomor_transaksi)
+        print("transaksi berhasil dihapus")
+    elif choice == "9":
+        manager.show_transactions()
+        nomor_transaksi = int(input("Nomor transaksi : "))
+        jumlah = int(input("Jumlah :"))
+        kategori = input("Kategori :")
+        catatan = input("Catatan :")
+        jenis = input("Jenis (Pemasukan/Pengeluaran) : ")
+        manager.update_transaction(nomor_transaksi, jumlah, kategori, catatan, jenis)
+        print("Transaksi berhasil diupdate")
     elif choice == "0":
         print("keluar...")
 
