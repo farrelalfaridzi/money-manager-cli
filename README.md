@@ -1,65 +1,102 @@
-# 💰 Money Manager CLI
+# 💰 Money Manager
 
-A command-line personal finance management application built with Python. This project allows users to record income and expenses, calculate balances, search and filter transactions, and manage financial records using SQLite as the database.
+A personal finance management application built with Python.
 
-The project was developed as a learning journey to practice Object-Oriented Programming (OOP), software architecture, database integration, Git workflow, and unit testing.
+This project started as a command-line (CLI) application and is gradually evolving into a full-featured web application using Flask.
+
+The main goal of this project is not only to build a finance manager, but also to document the complete learning journey from Python fundamentals to software engineering, web development, and backend development.
 
 ---
 
 ## ✨ Features
 
+### 💻 CLI Version (v1.0)
+
 - ➕ Add Income
 - ➖ Add Expense
-- 💰 Calculate Current Balance
-- 📜 View Transaction History
-- 🔍 Search Transactions by Category
-- 🏷️ Filter Transactions by Type
-- 📈 View Total Income
-- 📉 View Total Expense
-- 🗑️ Delete Transaction
+- 💰 Calculate Balance
+- 📜 View Transactions
+- 🔍 Search Transactions
+- 🏷️ Filter Transactions
+- 📈 Monthly Report
 - ✏️ Update Transaction
-- 💾 Persistent Storage using SQLite
+- 🗑️ Delete Transaction
+- 💾 SQLite Storage
 - ✅ Unit Testing
+
+---
+
+### 🌐 Web Version (v2.0 - In Progress)
+
+#### Flask Fundamentals
+
+- ✅ Flask Setup
+- ✅ Routing
+- ✅ HTML Templates
+- ✅ Template Inheritance
+- ✅ Jinja2
+- ✅ Forms
+- ✅ GET & POST
+- ✅ Input Validation
+
+#### Core Features
+
+- ✅ Add Transaction
+- ✅ View Transactions
+- ✅ Edit Transaction
+- ✅ Delete Transaction
+- 🚧 Dashboard
+- 🚧 Search
+- 🚧 Filter
+- 🚧 Category
+- 🚧 Monthly Report
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Python 3
+- Python
+- Flask
 - SQLite3
+- HTML
+- Jinja2
 - unittest
-- Git & GitHub
+- Git
+- GitHub
 
 ---
 
 ## 📁 Project Structure
 
-```
+```text
 money-manager-cli/
 │
 ├── core/
 │   ├── manager.py
 │   └── transaction.py
 │
+├── storage/
+│   └── database.py
+│
 ├── services/
 │   ├── balance_service.py
 │   ├── filter_service.py
 │   └── search_service.py
 │
-├── storage/
-│   └── database.py
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── add.html
+│   ├── edit.html
+│   └── transactions.html
 │
-├── data/
-│   └── money_manager.db
+├── static/
 │
 ├── tests/
-│   ├── test_balance_service.py
-│   ├── test_filter_service.py
-│   └── test_search_service.py
 │
-├── ui/
-│   └── menu.py
+├── data/
 │
+├── app.py
 ├── main.py
 └── README.md
 ```
@@ -68,19 +105,27 @@ money-manager-cli/
 
 ## 🚀 Installation
 
-Clone this repository.
+Clone the repository.
 
 ```bash
 git clone https://github.com/farrelalfaridzi/money-manager-cli.git
 ```
 
-Move into the project directory.
+Enter the project.
 
 ```bash
 cd money-manager-cli
 ```
 
-Run the application.
+Install dependencies.
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### Run CLI Version
 
 ```bash
 python main.py
@@ -88,30 +133,21 @@ python main.py
 
 ---
 
-## 📸 Preview
+### Run Web Version
 
-Example menu:
+```bash
+python app.py
+```
 
-```text
-========== Money Manager ==========
+Then open:
 
-1. Add Income
-2. Add Expense
-3. Show Balance
-4. Show Transactions
-5. Search by Category
-6. Filter by Type
-7. Show Total Income / Expense
-8. Delete Transaction
-9. Update Transaction
-0. Exit
+```
+http://127.0.0.1:5000
 ```
 
 ---
 
 ## 🧪 Running Tests
-
-Run all unit tests using:
 
 ```bash
 python -m unittest discover
@@ -119,30 +155,117 @@ python -m unittest discover
 
 ---
 
-## 📚 What I Learned
+# 🚀 Roadmap
 
-During this project I learned:
+## ✅ v1.0 — CLI Application
 
-- Object-Oriented Programming (OOP)
-- Layered Project Architecture
-- SQLite Database Integration
-- CRUD Operations
-- Exception Handling
-- Git Branching & Merge Workflow
-- Unit Testing with unittest
-- Clean Code Refactoring
+- Transaction Class (OOP)
+- Income & Expense
+- Balance Calculation
+- Search
+- Filter
+- Category
+- Monthly Report
+- SQLite Storage
+- Unit Testing
+- Documentation
+- Git Workflow
+- Release v1.0
 
 ---
 
-## 🔮 Future Improvements
+## 🚧 v2.0 — Flask Web Application
 
-- Monthly financial reports
-- Budget planning
-- Data visualization
-- Export to CSV / Excel
-- User authentication
-- Flask REST API
-- Web Interface
+### Flask Fundamentals
+
+- [x] Flask Setup
+- [x] Routing
+- [x] HTML
+- [ ] CSS
+- [x] Template Inheritance
+- [x] Jinja2
+- [x] Form
+- [x] GET & POST
+- [x] request.form
+- [x] Input Validation
+
+### Dashboard
+
+- [ ] Dashboard Summary
+- [ ] Balance
+- [ ] Total Income
+- [ ] Total Expense
+
+### Core Features
+
+- [x] SQLite Integration
+- [x] Add Transaction
+- [x] View Transactions
+- [x] Edit Transaction
+- [x] Delete Transaction
+- [ ] Search
+- [ ] Filter
+- [ ] Category
+- [ ] Monthly Report
+
+### Visualization
+
+- [ ] Charts
+- [ ] Export CSV
+- [ ] Import CSV
+- [ ] Database Backup
+
+### User
+
+- [ ] Login
+- [ ] Logout
+- [ ] Multi User
+
+- [ ] Release v2.0
+
+---
+
+## 🔮 v3.0 — Modern Backend
+
+### AI Features
+
+- [ ] AI Financial Analysis
+- [ ] Spending Recommendation
+- [ ] Financial Insight
+
+### API
+
+- [ ] FastAPI
+- [ ] REST API
+- [ ] API Documentation
+
+### Deployment
+
+- [ ] Docker
+- [ ] Deploy
+- [ ] Domain
+- [ ] CI/CD
+
+- [ ] Release v3.0
+
+---
+
+## 📚 Learning Journey
+
+During this project, I have learned:
+
+- Object-Oriented Programming (OOP)
+- Layered Project Architecture
+- SQLite Database
+- CRUD Operations
+- Flask Fundamentals
+- Jinja2 Templates
+- Routing & Forms
+- Git Branch Workflow
+- Unit Testing
+- Clean Code & Refactoring
+
+This repository will continue to grow as I learn more about backend development, web development, software engineering, and AI.
 
 ---
 
@@ -150,5 +273,6 @@ During this project I learned:
 
 **Muhamad Farrel Alfaridzi**
 
-GitHub:
+GitHub
+
 https://github.com/farrelalfaridzi

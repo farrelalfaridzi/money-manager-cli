@@ -1,12 +1,26 @@
 from flask import Flask, render_template, request, url_for, redirect
 from core.transaction import Transaction
 from core.manager import TransactionManager
+from services.balance_service import BalanceService
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    manager = TransactionManager()
+    balance_service = BalanceService()
+    transactions = manager.get_transactions()
+    saldo=balance_service.calculate_balance(transactions)
+    pemasukan=balance_service.get_income(transactions)
+    pengeluaran=balance_service.get_expense(transactions)
+    recent_transactions = transactions[-5:]
+    recent_transactions.reverse()
+    return render_template("dashboard.html",
+                            saldo=saldo,
+                            pemasukan=pemasukan,
+                            pengeluaran=pengeluaran,
+                            recent_transactions=recent_transactions
+                            )
 
 @app.route("/add", methods=["GET", "POST"])
 def add():

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<p>Selamat datang di Money Manager.</p>
+
+<p>Ringkasan keuangan akan ditampilkan di sini.</p>
+
+<h3>Saldo</h3>
+
+<p>{{ saldo }}</p>
+
+<h3>Pemasukan</h3>
+
+<p>{{ pemasukan }}</p>
+
+<h3>Pengeluaran</h3>
+
+<p>{{ pengeluaran }}</p>
+
+<h3>Transaksi terakhir</h3>
+
+<table border="1">
+    
+    <tr>
+        <th>Kategori</th>
+        <th>Jumlah</th>
+        <th>Jenis</th>
+        <th>Catatan</th>
+    </tr>
+
+    {% for transaction in recent_transactions %}
+    <tr>
+        <td>{{ transaction.category }}</td>
+        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.jenis }}</td>
+        <td>{{ transaction.description }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
