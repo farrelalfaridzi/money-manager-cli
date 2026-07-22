@@ -16,10 +16,8 @@ class TransactionManager:
                 print(transaction)
                 print("-------------------------")
 
-    def delete_transaction(self, nomor):
-        nomor -= 1
-        transaction = self.transactions[nomor]
-        id = transaction.id
+    def delete_transaction(self, id):
+        transaction = self.get_transaction_by_id(id)
         self.database.delete_transaction(id)
         self.transactions.remove(transaction)
 

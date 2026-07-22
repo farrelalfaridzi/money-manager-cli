@@ -39,5 +39,11 @@ def edit(id):
         return redirect(url_for("transactions"))
     return render_template("edit.html", transaction = manager.get_transaction_by_id(id))
 
+@app.route("/delete/<int:id>")
+def delete(id):
+    manager = TransactionManager()
+    manager.delete_transaction(id)
+    return redirect(url_for("transactions"))
+
 if __name__=="__main__":
     app.run(debug=True)

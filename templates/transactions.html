@@ -11,7 +11,8 @@
         <th>Jumlah</th>
         <th>Jenis</th>
         <th>Catatan</th>
-        <th>Aksi</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
 
     {% for transaction in transactions %}
@@ -22,6 +23,9 @@
         <td>{{ transaction.description }}</td>
         <td>
             <a href="{{ url_for('edit', id=transaction.id) }}">Edit</a>
+        </td>
+        <td>
+            <a href="{{ url_for('delete', id=transaction.id)}}">Delete</a>
         </td>
     </tr>
     {% endfor %}
