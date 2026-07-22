@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Tambah Transaksi</h2>
+
+<form action="/add" method="post">
+
+    <label>Jumlah :</label>
+    <input type="number" name="amount">
+    <br><br>
+
+    <label>Kategori :</label>
+    <input type="text" name="category">
+    <br><br>
+
+    <label>Catatan :</label>
+    <input type="text" name="description">
+    <br><br>
+
+    <label>Jenis :</label>
+    <select name="jenis">
+        <option>Pemasukan</option>
+        <option>Pengeluaran</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Tambah</button>
+
+</form>
+
+{% endblock %}
