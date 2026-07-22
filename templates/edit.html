@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Edit Transaksi</h2>
+
+<form action="/edit/{{ transaction.id }}" method="post">
+
+    <label>Jumlah :</label>
+    <input type="number" name="amount" value="{{ transaction.amount }}">
+    <br><br>
+
+    <label>Kategori :</label>
+    <input type="text" name="category" value="{{ transaction.category }}">
+    <br><br>
+
+    <label>Catatan :</label>
+    <input type="text" name="description" value="{{ transaction.description }}">
+    <br><br>
+
+    <label>Jenis :</label>
+    <select name="jenis">
+        <option {% if transaction.jenis == "Pemasukan"%}
+        selected {% endif %}>Pemasukan</option>
+        <option {% if transaction.jenis == "Pengeluaran" %}
+        selected {% endif %}>Pengeluaran</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Update</button>
+
+</form>
+
+{% endblock %}
