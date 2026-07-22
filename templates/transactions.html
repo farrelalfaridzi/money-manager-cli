@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Transaksi</h2>
+
+<table border="1">
+    
+    <tr>
+        <th>Kategori</th>
+        <th>Jumlah</th>
+        <th>Jenis</th>
+        <th>Catatan</th>
+    </tr>
+
+    {% for transaction in transactions %}
+    <tr>
+        <td>{{ transaction.category }}</td>
+        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.jenis }}</td>
+        <td>{{ transaction.description }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

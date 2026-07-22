@@ -31,3 +31,6 @@ class TransactionManager:
         transaction.description = description
         transaction.jenis = jenis
         self.database.update_transaction(transaction)
+
+    def get_transactions(self):
+        return self.transactions

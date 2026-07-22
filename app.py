@@ -20,5 +20,11 @@ def add():
         manager.add_transaction(transaction)
     return render_template("add.html")
 
+@app.route("/transactions")
+def transactions():
+    manager = TransactionManager()
+    return render_template("transactions.html",
+                            transactions = manager.get_transactions())
+
 if __name__=="__main__":
     app.run(debug=True)
