@@ -3,26 +3,35 @@
     <head>
         <title>Money Manager Web</title>
 
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}">
+
     </head>
 
     <body>
 
-        <h1>Money Manager</h1>
+        <header>
+            <h1>Money Manager</h1>
+            
+            <nav>
+                <a href="{{ url_for('home') }}">Dashboard</a>
+                <a href="{{ url_for('add') }}">Tambah Transaksi</a>
+                <a href="{{ url_for('transactions') }}">Daftar Transaksi</a>
+            </nav>
+        </header>
 
-        <hr>
-
-        <a href="{{ url_for('home') }}">Dashboard</a>
-        <a href="{{ url_for('add') }}">Tambah Transaksi</a>
-        <a href="{{ url_for('transactions') }}">Daftar Transaksi</a>
         
-        <hr>
+        <main>
 
-        {% block content %}
+            {% block content %}
 
-        {% endblock %}
+            {% endblock %}
 
-        <hr>
+        </main>
 
-        <p>Copyright 2026</p>
+        
+        <footer>
+            Copyright 2026
+        </footer>
     </body>
 </html>
