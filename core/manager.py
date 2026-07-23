@@ -1,8 +1,10 @@
 from storage.database import DatabaseManager
+from services.search_service import SearchService
 class TransactionManager:
     def __init__(self):
         self.database = DatabaseManager()
         self.transactions = self.database.get_all_transactions()
+        self.service = SearchService()
 
     def add_transaction(self, transaction):
         self.database.insert_transaction(transaction)
@@ -37,3 +39,10 @@ class TransactionManager:
             if transaction.id == id:
                 return transaction
         return None
+
+    def search_transaction(self, category):
+        if not category:
+            return self.transactions
+        else:
+            hasil = self.service.search_by_category(self.transactions, category)
+            return hasil

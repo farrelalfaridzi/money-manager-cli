@@ -38,8 +38,12 @@ def add():
 @app.route("/transactions")
 def transactions():
     manager = TransactionManager()
-    return render_template("transactions.html",
-                            transactions = manager.get_transactions())
+    keyword = request.args.get("search", "")
+    transactions = manager.search_transaction(keyword)
+    return render_template(
+        "transactions.html",
+        transactions=transactions
+    )
 
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id):
