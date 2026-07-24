@@ -39,7 +39,8 @@ def add():
 def transactions():
     manager = TransactionManager()
     keyword = request.args.get("search", "")
-    transactions = manager.search_transaction(keyword)
+    jenis = request.args.get("jenis")
+    transactions = manager.search_transaction(keyword, jenis)
     return render_template(
         "transactions.html",
         transactions=transactions

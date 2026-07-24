@@ -1,10 +1,13 @@
 from storage.database import DatabaseManager
 from services.search_service import SearchService
+from services.filter_service import FilterService
 class TransactionManager:
     def __init__(self):
         self.database = DatabaseManager()
         self.transactions = self.database.get_all_transactions()
         self.service = SearchService()
+        self.filter = FilterService()
+
 
     def add_transaction(self, transaction):
         self.database.insert_transaction(transaction)
@@ -40,9 +43,14 @@ class TransactionManager:
                 return transaction
         return None
 
-    def search_transaction(self, category):
-        if not category:
+    def search_transaction(self, category, jenis):
+        if not category and jenis == "Semua":
             return self.transactions
-        else:
-            hasil = self.service.search_by_category(self.transactions, category)
-            return hasil
+        kategori = self.service.search_by_category(self.transactions, category)
+        if jenis == "Semua":
+            return kategori
+        elif not category and jenis != "Semua":
+            filter_transaksi = self.filter.filter_by_type(self.transactions, jenis)
+            return filter_transaksi
+        hasil = self.filter.filter_by_type(kategori, jenis)
+        return hasil
